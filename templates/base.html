@@ -2,16 +2,42 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Библиотека{% endblock %}</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}"/>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-</head>
-<body>
-{% block content %}{% endblock %}
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Início{% endblock %} | Chegadxs Biblioteca</title>
+        <link rel="stylesheet" href="{% static "books/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "books/css/bootstrap-theme.min.css" %">
+        <link rel="stylesheet" type="text/css" href="{% static "books/styles.css" %}"/>
+        <script src="{% static "books/js/jquery-latest.js" %}"></script>
+        <script src="{% static "books/js/bootstrap.min.js" %}"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4 text-center">
+                        <a href="../index"><img src="{% static "books/img/logo.png" %}" class="logo"></a>
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        <div class="search">
+                            <img src="{% static "books/img/search.png" %}"><a href="../search">Buscar livro</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="title">
+                    <h1>CHEGADXS BIBLIOTECA
+                    <br>
+                    ESPAÇO SOMA</h1>
+                </div>
+                {% block content %}{% endblock %}
+
+                <div class="main_page">
+                    <a href="../index">Início</a>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

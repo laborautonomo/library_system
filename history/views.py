@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.db.models.query import EmptyQuerySet
 from django.views.generic import ListView
 
@@ -11,12 +13,12 @@ class BookListView(ListView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated():
-            return super().get_queryset().filter(reader=self.request.user)
+            return super(BookListView, self).get_queryset().filter(reader=self.request.user)
         else:
             return EmptyQuerySet
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(BookListView, self).get_context_data(**kwargs)
         total_fine = 0
         if self.get_queryset() != EmptyQuerySet:
             for item in self.get_queryset():

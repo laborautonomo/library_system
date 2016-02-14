@@ -1,96 +1,71 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Ваш список книг{% endblock %}
+{% block title %}Sua lista de livros{% endblock %}
 {% block content %}
 
-     <div class="header">
-                <div class="container">
+<div class="result">
 
-                    <div class="row">
+    <p>
+        Sua lista de livros
+    </p>
 
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4 text-center">
-                            <a href="../index"><img src="{% static "img/logo.png" %}" class="logo"></a>
-                        </div>
-                        <div class="col-sm-4 text-right">
-                            <div class="search">
-                                <img src="{% static "img/search.png" %}"><a href="../search">Поиск книги</a>
-                            </div>
-                        </div>
+    {% if books %}
 
-                    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>AUTOR</th>
+                    <th>TÍTULO</th>
+                    <th>EDITORA</th>
+                    <th>ANO</th>
+                    <th>DÍVIDA</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                    <div class="title">
-                        <h1>ТОМСКАЯ БИБЛИОТЕКА<br>ИМЕНИ А.П.ЧЕХОВА</h1>
-                    </div>
+                {% for book_i in books %}
 
-                <div class="result">
+                <tr>
+                    <td>{{ book_i.book_item.book.author }}</td>
+                    <td>{{ book_i.book_item.book.name }}</td>
+                    <td>{{ book_i.book_item.book.publisher }}</td>
+                    <td>{{ book_i.book_item.book.year }}</td>
+                    <td> {% if book_i.fine > 0 and not book_i.is_fine_paid %}
+                    <div style="color: red;">
+                        {{ book_i.fine }} руб.
+                    </div> {% else %}
+                    -
+                    {% endif %} </td>
+                </tr>
 
-                    <p>Ваш список книг</p>
+                <tr>
+                    <td colspan="2" class="date" style="border-width: 0; padding: 0; padding-left: 15px; height: 20px;">Сроки: {{ book_i.date_taken }} - {{ book_i.date_due }}</td>
+                    <td colspan="3" class="date1" style="border-width: 0; padding: 0; padding-right: 15px;"> {% if book_i.date_returned == null or  book_i.date_returned != null and book_i.fine > 0 and  not book_i.is_fine_paid %}
+                    {% if book_i.date_returned != null and book_i.fine > 0 and  not book_i.is_fine_paid %}
+                    <div>
+                        O livro está na biblioteca, mas a dívida não foi paga
+                    </div> {% endif %}
+                    {% endif %} </td>
+                </tr>
 
-                    {% if books %}
+                {% endfor %}
 
-                        <div class="table-responsive">
-                        <table class="table table-bordered table-condensed">
-                             <thead>
-                             <tr>
-                             <th>АВТОР</th>
-                             <th>НАЗВАНИЕ</th>
-                             <th>ИЗДАТЕЛЬСТВО</th>
-                             <th>ГОД ИЗДАНИЯ</th>
-                             <th>ДОЛГ</th>
-                             </tr>
-                             </thead>
-                             <tbody>
+            </tbody>
+        </table>
+    </div>
 
-                            {% for book_i in books %}
+    <h3>
+    <div style="color: red">
+        Total a receber: R$ {{ total_fine }}
+    </div></h3>
+    <br>
+    {% else %}
+    <p class="error">
+        No momento você não tem livros
+    </p>
+    {% endif %}
 
-
-
-                                <tr>
-                                <td>{{ book_i.book_item.book.author }}</td>
-                                <td>{{ book_i.book_item.book.name }}</td>
-                                <td>{{ book_i.book_item.book.publisher }}</td>
-                                <td>{{ book_i.book_item.book.year }}</td>
-                                <td>
-                                    {% if book_i.fine > 0 and not book_i.is_fine_paid %}
-                                        <div style="color: red;">{{ book_i.fine }} руб.</div>
-                                    {% else %}
-                                        -
-                                {% endif %}
-                                </td>
-                                </tr>
-
-                                <tr>
-                                <td colspan="2" class="date" style="border-width: 0; padding: 0; padding-left: 15px; height: 20px;">Сроки: {{ book_i.date_taken }} - {{ book_i.date_due }}</td>
-                                <td colspan="3" class="date1" style="border-width: 0; padding: 0; padding-right: 15px;">
-                                    {% if book_i.date_returned == null or  book_i.date_returned != null and book_i.fine > 0 and  not book_i.is_fine_paid %}
-                                    {% if book_i.date_returned != null and book_i.fine > 0 and  not book_i.is_fine_paid %}
-                                        <div>Книга в библиотеке, но задолженность не погашена</div>
-                                    {% endif %}
-                                    {% endif %}
-                                </td>
-                                </tr>
-
-                            {% endfor %}
-
-                            </tbody>
-                            </table>
-                        </div>
-
-                    <h3><div style="color: red">Суммарная задолженность: {{ total_fine }} руб.</div></h3>
-                        <br>
-                    {% else %}
-                        <p class="error">У вас сейчас нет книг</p>
-                    {% endif %}
-
-                </div>
-
-                <div class="main_page">
-                    <a href="../index">Вернуться на домашнюю страницу</a>
-                </div>
-
-                </div>
-     </div>
+</div>
 
 {% endblock %}

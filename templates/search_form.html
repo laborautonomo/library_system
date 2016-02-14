@@ -1,51 +1,31 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Поиск{% endblock %}
+{% block title %}Pesquisa{% endblock %}
 {% block content %}
+<div class="login">
+    Use a busca no site
+    <br>
+    para encontrar o livro:
+</div>
 
-        <div class="header">
-                <div class="container">
+<form class="form_login" action="" method="get">
 
-                    <div class="row">
+    {% if error %}
+    <p class="error">
+        Por favor, preencha pelo menos um critério de pesquisa
+    </p>
+    {% endif %}
 
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4 text-center">
-                            <a href="../index"><img src="{% static "img/logo.png" %}" class="logo"></a>
-                        </div>
-                        <div class="col-sm-4 text-right">
-                            <div class="search">
-                                <img src="{% static "img/search.png" %}"><a href="../search">Поиск книги</a>
-                            </div>
-                        </div>
+    <input type="text" name="name" placeholder="Título">
+    <br>
 
-                    </div>
+    <input type="text" name="author" placeholder="Autor(a)">
+    <br>
 
-                    <div class="title">
-                        <h1>ТОМСКАЯ БИБЛИОТЕКА<br>ИМЕНИ А.П.ЧЕХОВА</h1>
-                    </div>
+    <button type="submit" class="btn bucket">
+        Pesquisar
+    </button>
+    <br>
 
-                    <div class="login">
-                        Воспользуйтесь поиском по сайту,<br> чтобы найти книгу:
-                    </div>
-
-                <form class="form_login" action="" method="get">
-
-                    {% if error %}
-                        <p class="error">Пожалуйста, заполните форму поиска</p>
-                    {% endif %}
-
-                    <input type="text" name="name" placeholder="Название книги"><br>
-
-                    <input type="text" name="author" placeholder="Автор книги"><br>
-
-                    <button type="submit" class="btn bucket">Поиск</button><br>
-
-                </form>
-
-                <div class="main_page">
-                    <a href="../index">Вернуться на домашнюю страницу</a>
-                </div>
-
-                </div>
-    </div>
+</form>
 {% endblock %}

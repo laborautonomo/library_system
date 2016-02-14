@@ -1,62 +1,44 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Смена пароля{% endblock %}  </head>
+{% block title %}Alterar senha{% endblock %}
 {% block content %}
 
-    <div class="header">
-                <div class="container">
+<div class="login">
+    Alterar senha
+</div>
 
-                    <div class="row">
+<form class="form_login" action="" method="post">
 
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4 text-center">
-                            <a href="../index"><img src="{% static "img/logo.png" %}" class="logo"></a>
-                        </div>
-                        <div class="col-sm-4 text-right">
-                            <div class="search">
-                                <img src="{% static "img/search.png" %}"><a href="../search">Поиск книги</a>
-                            </div>
-                        </div>
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <p class="error">
+        {{ message }}
+    </p>
+    {% else %}
+    <p class="true">
+        {{ message }}
+    </p>
+    {% endif %}
+    {% endfor %}
 
-                    </div>
+    {% csrf_token %}
 
-                    <div class="title">
-                        <h1>ТОМСКАЯ БИБЛИОТЕКА<br>ИМЕНИ А.П.ЧЕХОВА</h1>
-                    </div>
+    <label for="id_old_password"></label>
+    <input type="password" name="old_password" value="" id="id_old_password" placeholder="Senha antiga">
+    <br>
 
-                    <div class="login">
-                        Смена пароля
-                    </div>
+    <label for="id_new_password1"></label>
+    <input type="password" name="new_password1" value="" id="id_new_password1" placeholder="Nova senha">
+    <br>
 
-                <form class="form_login" action="" method="post">
+    <label for="id_new_password2"></label>
+    <input type="password" name="new_password2" value="" id="id_new_password2" placeholder="Repita nova senha">
+    <br>
 
-                    {% for message in messages %}
-                        {% if message.tags == 'error' %}
-                            <p class="error">{{ message }}</p>
-                        {% else %}
-                            <p class="true">{{ message }}</p>
-                        {% endif %}
-                    {% endfor %}
+    <button type="submit" class="btn bucket">
+        Alterar senha
+    </button>
+    <br>
 
-                    {% csrf_token %}
-
-                    <label for="id_old_password"></label>
-                    <input type="password" name="old_password" value="" id="id_old_password" placeholder="Старый пароль"><br>
-
-                    <label for="id_new_password1"></label>
-                    <input type="password" name="new_password1" value="" id="id_new_password1" placeholder="Новый пароль"><br>
-
-                    <label for="id_new_password2"></label>
-                    <input type="password" name="new_password2" value="" id="id_new_password2" placeholder="Повторите новый пароль"><br>
-
-                    <button type="submit" class="btn bucket">Сменить пароль</button><br>
-
-                </form>
-
-                <div class="main_page">
-                    <a href="../index">Вернуться на домашнюю страницу</a>
-                </div>
-
-                </div>
-    </div>
+</form>
 {% endblock %}

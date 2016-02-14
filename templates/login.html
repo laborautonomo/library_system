@@ -1,55 +1,34 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Вход{% endblock %}
+{% block title %}Login{% endblock %}
 {% block content %}
 
-                <div class="header">
-                <div class="container">
+<div class="login">
+    Digite seu login e senha
+</div>
 
-                    <div class="row">
+{% if form.errors %}
+<p class="error">
+    Lamentamos, nome de usuário ou senha incorreto!
+</p>
+{% endif %}
 
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4 text-center">
-                            <a href="../index"><img src="{% static "img/logo.png" %}" class="logo"></a>
-                        </div>
-                        <div class="col-sm-4 text-right">
-                            <div class="search">
-                                <img src="{% static "img/search.png" %}"><a href="../search">Поиск книги</a>
-                            </div>
-                        </div>
+<form class="form_login" action="" method="post">
+    {% csrf_token %}
 
-                    </div>
+    <label for="username"></label>
+    <input type="text" name="username" value="" id="username" placeholder="Digite seu nome de usuário">
+    <br>
 
-                    <div class="title">
-                        <h1>ТОМСКАЯ БИБЛИОТЕКА<br>ИМЕНИ А.П.ЧЕХОВА</h1>
-                    </div>
+    <label for="password"></label>
+    <input type="password" name="password" value="" id="password" placeholder="Digite sua senha">
+    <br>
 
-                    <div class="login">
-                        Введите логин и пароль
-                    </div>
+    <button type="submit" class="btn bucket">
+        Login
+    </button>
+    <br>
 
-                    {% if form.errors %}
-                        <p class="error">Сожалеем, вы неправильно ввели логин или пароль</p>
-                    {% endif %}
-
-                    <form class="form_login" action="" method="post">
-                        {% csrf_token %}
-
-                        <label for="username"></label>
-                        <input type="text" name="username" value="" id="username" placeholder="Введите логин"><br>
-
-                        <label for="password"></label>
-                        <input type="password" name="password" value="" id="password" placeholder="Введите пароль"><br>
-
-                        <button type="submit" class="btn bucket">Войти</button><br>
-
-                    </form>
-
-                <div class="main_page">
-                    <a href="../index">Вернуться на домашнюю страницу</a>
-                </div>
-
-                </div>
-        </div>
+</form>
 
 {% endblock %}
