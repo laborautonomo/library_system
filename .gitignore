@@ -4,3 +4,14 @@ __pycache__/
 *.pyc
 *.pyo
 bower_components/
+venv/
+.project
+.settings/
+.pydevproject
+
+static/*
+!static/.empty
+
+# Others
+librarysystem/settings_local.py
+librarysystem/settings_production.py
