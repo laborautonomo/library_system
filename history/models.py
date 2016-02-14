@@ -8,12 +8,12 @@ from readers.models import Reader
 
 
 class HistoryItem(models.Model):
-    date_taken = models.DateField(verbose_name="Дата выдачи")
-    date_due = models.DateField(verbose_name="Срок возврата")
-    date_returned = models.DateField(verbose_name="Дата возврата", blank=True, null=True)
-    fine = models.SmallIntegerField(verbose_name="Суммарный штраф", default=0)
-    daily_fine = models.SmallIntegerField("Ежедневный штраф (в рублях)", default=1)
-    is_fine_paid = models.NullBooleanField(verbose_name="Штраф оплачен?", default=False)
+    date_taken = models.DateField(verbose_name="Data de emissão")
+    date_due = models.DateField(verbose_name="Data de vencimento")
+    date_returned = models.DateField(verbose_name="Data do retorno", blank=True, null=True)
+    fine = models.SmallIntegerField(verbose_name="Multa total", default=0)
+    daily_fine = models.SmallIntegerField("Multa diária", default=1)
+    is_fine_paid = models.NullBooleanField(verbose_name="Bom pagador(a)?", default=False)
     book_item = models.ForeignKey(BookItem)
     reader = models.ForeignKey(Reader)
 
