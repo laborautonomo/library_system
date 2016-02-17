@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
             name='Reader',
             fields=[
                 ('user_ptr', models.OneToOneField(parent_link=True, to=settings.AUTH_USER_MODEL, serialize=False, auto_created=True, primary_key=True)),
-                ('phone_number', models.CharField(blank=True, verbose_name='Номер телефона', max_length=16)),
-                ('address', models.CharField(blank=True, verbose_name='Адрес', max_length=50)),
+                ('phone_number', models.CharField(blank=True, verbose_name='Telefone', max_length=16)),
+                ('address', models.CharField(blank=True, verbose_name='Endereço', max_length=50)),
             ],
             options={
                 'verbose_name': 'user',

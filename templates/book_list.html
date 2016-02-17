@@ -33,14 +33,14 @@
                     <td>{{ book_i.book_item.book.year }}</td>
                     <td> {% if book_i.fine > 0 and not book_i.is_fine_paid %}
                     <div style="color: red;">
-                        {{ book_i.fine }} руб.
+                        R$ {{ book_i.fine }}
                     </div> {% else %}
                     -
                     {% endif %} </td>
                 </tr>
 
                 <tr>
-                    <td colspan="2" class="date" style="border-width: 0; padding: 0; padding-left: 15px; height: 20px;">Сроки: {{ book_i.date_taken }} - {{ book_i.date_due }}</td>
+                    <td colspan="2" class="date" style="border-width: 0; padding: 0; padding-left: 15px; height: 20px;">Condição: {{ book_i.date_taken }} - {{ book_i.date_due }}</td>
                     <td colspan="3" class="date1" style="border-width: 0; padding: 0; padding-right: 15px;"> {% if book_i.date_returned == null or  book_i.date_returned != null and book_i.fine > 0 and  not book_i.is_fine_paid %}
                     {% if book_i.date_returned != null and book_i.fine > 0 and  not book_i.is_fine_paid %}
                     <div>
@@ -55,10 +55,10 @@
         </table>
     </div>
 
-    <h3>
+    <!-- h3>
     <div style="color: red">
-        Total a receber: R$ {{ total_fine }}
-    </div></h3>
+        Total à pagar: R$ {{ total_fine }}
+    </div></h3 -->
     <br>
     {% else %}
     <p class="error">

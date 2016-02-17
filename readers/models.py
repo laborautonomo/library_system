@@ -9,9 +9,13 @@ class Reader(User):
     address = models.CharField(verbose_name="Endereço", blank=True, max_length=50)
     objects = UserManager()
 
-    def __str__(self):
-        return '№{} {} {}: {}'.format(
+    def __unicode__(self):
+        return u'№{} {} {}: {}'.format(
             self.pk, self.first_name,
             self.last_name,
             self.username
         )
+    
+    class Meta:
+        verbose_name = u"Usuári@"
+        verbose_name_plural = u"Usuári@s"
