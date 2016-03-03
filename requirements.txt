@@ -17,8 +17,10 @@ psycopg2==2.6.1
 ptyprocess==0.5.1
 pyflakes==0.8.1
 pyreadline==2.1
+pystache==0.5.4
 simplegeneric==0.8.1
 six==1.10.0
+static==1.0.2
 static3==0.6.1
 traitlets==4.0.0
 wsgiref==0.1.2
