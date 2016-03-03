@@ -1,6 +1,7 @@
 Django==1.8.5
 argparse==1.2.1
 decorator==4.0.4
+dj-static==0.0.6
 django-extensions==1.5.9
 flake8==2.4.1
 ipython==4.0.0
@@ -16,5 +17,6 @@ pyflakes==0.8.1
 pyreadline==2.1
 simplegeneric==0.8.1
 six==1.10.0
+static3==0.6.1
 traitlets==4.0.0
 wsgiref==0.1.2
