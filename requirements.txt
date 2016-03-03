@@ -1,9 +1,11 @@
 Django==1.8.5
 argparse==1.2.1
 decorator==4.0.4
+dj-database-url==0.3.0
 dj-static==0.0.6
 django-extensions==1.5.9
 flake8==2.4.1
+gunicorn==19.0.0
 ipython==4.0.0
 ipython-genutils==0.1.0
 mccabe==0.3.1
