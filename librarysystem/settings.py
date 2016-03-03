@@ -27,6 +27,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+#Google Analytics: change UA-XXXXX-X to be your site's ID.
+GOOGLE_ANALYTICS_CODE = 'UA-XXXXXXXX-XX'
+
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -106,6 +109,7 @@ INSTALLED_APPS = (
     'readers',
     'history',
     'librarysystem',
+    'ganalytics',
 )
 
 MIDDLEWARE_CLASSES = (
